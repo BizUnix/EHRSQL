@@ -43,7 +43,7 @@ def save(model, optimizer, scheduler, step, best_metric, args, checkpoint_path, 
 
 
 def load(model, load_model_path, args, reset_optim=False):
-    checkpoint = torch.load(load_model_path, map_location=args.device)
+    checkpoint = torch.load(load_model_path, map_location=args.device, weights_only=False)
     model.load_state_dict(checkpoint['model_state_dict'])
     model = model.to(args.device)
 
