@@ -6,38 +6,15 @@ EHRSQL is a large-scale, high-quality dataset designed for text-to-SQL question 
 
 The dataset is released along with our paper titled [EHRSQL: A Practical Text-to-SQL Benchmark for Electronic Health Records](https://arxiv.org/abs/2301.07695) (NeurIPS 2022 Datasets and Benchmarks). For further details, please refer to our paper.
 
-
-
-## News
-
-`06/22/2024` The complete data for the [newest EHRSQL data (MIMIC-IV demo)](https://github.com/glee4810/ehrsql-2024) has been released along with the [EHRSQL 2024 Shared Task Overview Paper](https://arxiv.org/abs/2405.06673).
-
-`04/27/2024` We have released the entire EHRSQL dataset (including test sets) to the public.
-
-`01/29/2024` EHRSQL for MIMIC-IV is being used as one of the shared tasks at [NAACL 2024 - ClinicalNLP 2024](https://clinical-nlp.github.io/2024/call-for-papers.html). For more information, please visit https://sites.google.com/view/ehrsql-2024.
-
-`09/21/2022` EHRSQL has been accepted to NeurIPS 2022 Datasets and Benchmarks ([3/163](https://papercopilot.com/statistics/neurips-statistics/neurips-2022-statistics-datasets-benchmarks/))!
-
-
 ## Getting Started
 
 ###  Requirments and Installation
-- Python version >= 3.7
-- Pytorch version == 1.7.1
-- SQLite3 version >= 3.33.0
-
+- Python version >= 3.9
 ```
 git clone https://github.com/glee4810/EHRSQL.git
 cd EHRSQL
-conda create -n ehrsql python=3.7
-conda activate ehrsql
-pip install pandas==1.5.3
-pip install dask
-pip install scikit-learn
-pip install func-timeout
-pip install transformers==4.19.2 # 4.29.2 works too
-pip install sentencepiece
-pip install wandb # if needed
+conda env create -f environment.yml
+conda activate EHRSQL
 ```
 
 ### Dataset
@@ -219,27 +196,4 @@ python T5/abstain_with_entropy.py --inference_result_path outputs/eval_ehrsql_mi
 To evaluate the generated SQL queries, run the code below.
 ```
 python evaluate.py --db_path ./dataset/ehrsql/mimic_iii/mimic_iii.sqlite --data_file dataset/ehrsql/mimic_iii/valid.json --pred_file ./outputs/eval_ehrsql_mimic3_t5_base__mimic3_valid/prediction.json
-```
-
-
-
-## Have Questions?
-
-Ask us questions on our Github issues page or contact gyubok.lee@kaist.ac.kr.
-
-
-
-## Citation
-
-When you use the EHRSQL dataset, we would appreciate it if you cite the following:
-
-```
-@article{lee2022ehrsql,
-  title={EHRSQL: A Practical Text-to-SQL Benchmark for Electronic Health Records},
-  author={Lee, Gyubok and Hwang, Hyeonji and Bae, Seongsu and Kwon, Yeonsu and Shin, Woncheol and Yang, Seongjun and Seo, Minjoon and Kim, Jong-Yeup and Choi, Edward},
-  journal={Advances in Neural Information Processing Systems},
-  volume={35},
-  pages={15589--15601},
-  year={2022}
-}
 ```
